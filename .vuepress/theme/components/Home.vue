@@ -21,11 +21,30 @@
 	</HomeSection>
 
 	<HomeSection class="projects" cmd="ls ~/Projects">
-		<h3>Projects</h3>
 		<div class="block">
-			<div class="rounded shadow-md">
-				<h3>Cobalt</h3>
-			</div>
+            <Project
+                name='Cobalt'
+                desc="An app to monitor and view app usage statistics"
+                img="https://github.com/Enigmatrix/Cobalt/blob/master/images/icon_512.png?raw=true"
+                gh-link="https://github.com/Enigmatrix/Cobalt"
+                project-link="enigmatrix.me/projects/cobalt.html"></Project>
+            <Project
+                name='TimeKeeper'
+                desc="Project I made that helps me keep track of time"
+                img="https://github.com/Enigmatrix/TimeKeeper/blob/master/TimeKeeper/Media/favicon.ico?raw=true"
+                gh-link="https://github.com/Enigmatrix/TimeKeeper/"
+                project-link="enigmatrix.me/projects/timekeeper.html"></Project>
+            <Project
+                name='ctfbot'
+                desc="CTF Bot for Discord"
+                img="https://ctftime.org/media/cache/8d/6e/8d6e60dd2949a3603f597caab9faa45f.png"
+                gh-link="https://github.com/Enigmatrix/ctfbot"
+                project-link="enigmatrix.me/projects/ctfbot.html"></Project>
+            <Project
+                name='with_libc'
+                desc="Change a program's libc to a new one, while automatically setting up the ld.so"
+                img="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Rust_programming_language_black_logo.svg/1024px-Rust_programming_language_black_logo.svg.png"
+                gh-link="https://github.com/Enigmatrix/with_libc"></Project>
 		</div>
 	</HomeSection>
 
@@ -36,8 +55,9 @@
 
 <script>
 import HomeSection from './HomeSection';
+import Project from './Project';
 export default {
-	components: {HomeSection}
+	components: {HomeSection, Project}
 }
 </script>
 
