@@ -21,7 +21,8 @@
 	</HomeSection>
 
 	<HomeSection class="projects" cmd="ls ~/Projects">
-		<div class="block">
+        <div class="flex">
+		<div class="block mx-auto md:w-3/4">
             <Project
                 name='Cobalt'
                 desc="An app to monitor and view app usage statistics"
@@ -42,10 +43,11 @@
                 project-link="enigmatrix.me/projects/ctfbot.html"></Project>
             <Project
                 name='with_libc'
-                desc="Change a program's libc to a new one, while automatically setting up the ld.so"
+                desc="Change a program's libc and set up the ld.so"
                 img="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Rust_programming_language_black_logo.svg/1024px-Rust_programming_language_black_logo.svg.png"
                 gh-link="https://github.com/Enigmatrix/with_libc"></Project>
 		</div>
+        </div>
 	</HomeSection>
 
 	<HomeSection class="contacts" cmd="cat contact.vcf">
