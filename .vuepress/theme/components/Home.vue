@@ -1,14 +1,14 @@
 <template>
-<main>
+<main class="home">
 	<HomeSection class="whoami" cmd="whoami">
 	<div class="flex flex-col md:flex-row items-center justify-center">
-	<img src="https://avatars2.githubusercontent.com/u/12296254?s=400&u=5e1ffb516172b4a0aebfbd7626ead99bbae39f58&v=4" class="p-4">
-	<div class="p-4">
-		<h1>Chandrasekaran Akash</h1>
-		<h3>Enigmatrix Atheros</h3>
-		<span>Student at NUS High. Codes in C#, JS, Python and others.</span>
-		<br>
-		<span>Interests include:</span>
+<div class="p-4">
+	<img src="https://avatars2.githubusercontent.com/u/12296254?s=400&u=5e1ffb516172b4a0aebfbd7626ead99bbae39f58&v=4" class="rounded-full shadow-lg">
+</div>
+	<div class="p-4 avadesc">
+		<h1 id="name1" class="text-5xl">Chandrasekaran Akash</h1>
+		<h3 id="name2" class="text-2xl mb-8">// Enigmatrix Atheros</h3>
+		<span class="text-lg">Student at NUS High. Codes in C#, TypeScript, Python and others.<br>Loves doing CTFs and Hackathons whenever possible.<br>Interests include:</span>
 		<ul>
 			<li>CS</li>
 			<li>Math</li>
