@@ -13,7 +13,9 @@
       ></VueTyper>
       </ClientOnly>
     </div>
-    <div v-if="isDone"><slot></slot></div>
+<transition name="fade">
+    <div v-show="isDone"><slot></slot></div>
+</transition>
   </section>
 </template>
 
@@ -38,7 +40,7 @@ export default {
   display: inline;
   font-family: monospace;
   font-size: 24px;
-  border: 2px solid #d4af37;
+  border: 2px solid #b58900;
   background-color: #1e1e1e;
   padding: 4px;
 }
@@ -48,7 +50,7 @@ export default {
 }
 
 .vue-typer-start {
-  color: #d4d4bd;
+  color: #93a1a1;
 }
 
 .vue-typer .custom.char.selected {

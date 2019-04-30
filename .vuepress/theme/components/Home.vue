@@ -5,10 +5,10 @@
 <div class="p-4">
 	<img src="https://avatars2.githubusercontent.com/u/12296254?s=400&u=5e1ffb516172b4a0aebfbd7626ead99bbae39f58&v=4" class="rounded-full shadow-lg">
 </div>
-	<div class="p-4 avadesc">
-		<h1 id="name1" class="text-5xl">Chandrasekaran Akash</h1>
-		<h3 id="name2" class="text-2xl mb-8">// Enigmatrix Atheros</h3>
-		<span class="text-lg">Student at NUS High. Codes in C#, TypeScript, Python and others.<br>Loves doing CTFs and Hackathons whenever possible.<br>Interests include:</span>
+	<div class="p-4 flex flex-col md:block items-center">
+		<h1 id="name1" class="text-4xl md:text-5xl">Chandrasekaran Akash</h1>
+		<h3 id="name2" class="text-xl md:text-2xl mb-8">// Enigmatrix Atheros</h3>
+		<span class="text-lg">Student at NUS High. Codes in C#, TypeScript, Python and others.<br>Loves doing CTFs and Hackathons whenever possible.</span><br><span class="text-xl">Interests include:</span>
 		<ul>
 			<li>CS</li>
 			<li>Math</li>
@@ -50,7 +50,9 @@
         </div>
 	</HomeSection>
 
-	<HomeSection class="contacts" cmd="cat contact.vcf">
+	<HomeSection class="contacts" cmd="cat contactme.vcf">
+		<div>Email: <span>enigmatrix2000@gmail.com</span></div>
+		<div>Mobile Number: <span>+65 96552532</span></div>
 	</HomeSection>
 </main>
 </template>
