@@ -22,25 +22,25 @@
 
 	<HomeSection class="projects" cmd="ls ~/Projects">
         <div class="flex">
-		<div class="block mx-auto md:w-3/4">
+		<div class="block mx-auto">
             <Project
                 name='Cobalt'
                 desc="An app to monitor and view app usage statistics"
                 img="https://github.com/Enigmatrix/Cobalt/blob/master/images/icon_512.png?raw=true"
                 gh-link="https://github.com/Enigmatrix/Cobalt"
-                project-link="enigmatrix.me/projects/cobalt.html"></Project>
+                project-link="/projects/cobalt.html"></Project>
             <Project
                 name='TimeKeeper'
                 desc="Project I made that helps me keep track of time"
                 img="https://github.com/Enigmatrix/TimeKeeper/blob/master/TimeKeeper/Media/favicon.ico?raw=true"
                 gh-link="https://github.com/Enigmatrix/TimeKeeper/"
-                project-link="enigmatrix.me/projects/timekeeper.html"></Project>
+                project-link="/projects/timekeeper.html"></Project>
             <Project
                 name='ctfbot'
                 desc="CTF Bot for Discord"
                 img="https://ctftime.org/media/cache/8d/6e/8d6e60dd2949a3603f597caab9faa45f.png"
                 gh-link="https://github.com/Enigmatrix/ctfbot"
-                project-link="enigmatrix.me/projects/ctfbot.html"></Project>
+                project-link="/projects/ctfbot.html"></Project>
             <Project
                 name='with_libc'
                 desc="Change a program's libc and set up the ld.so"

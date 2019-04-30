@@ -1,5 +1,3 @@
 module.exports = {
-  postcss: {
-    plugins: [require("tailwindcss")("./tailwind.js"), require("autoprefixer")]
-  },
+  plugins: ["@silvanite/tailwind"]
 };

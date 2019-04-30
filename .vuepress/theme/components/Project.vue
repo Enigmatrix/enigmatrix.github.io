@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center mb-4">
+  <div class="flex items-center mt-8 md:mt-16">
     <img :src="img" class="w-16 h-16 md:w-32 md:h-32" />
     <div class="m-2">
       <div class="flex">

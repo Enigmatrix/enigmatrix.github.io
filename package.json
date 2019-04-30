@@ -13,13 +13,8 @@
     "url": "https://github.com/Enigmatrix/enigmatrix.github.io/issues"
   },
   "homepage": "https://github.com/Enigmatrix/enigmatrix.github.io#readme",
-  "devDependencies": {
-    "tailwindcss": "^0.7.3",
-    "autoprefixer": "^9.4.2",
-    "postcss-import": "^12.0.1",
-    "postcss-loader": "^3.0.0"
-  },
   "dependencies": {
+    "@silvanite/vuepress-plugin-tailwind": "^1.1.0",
     "vue-typer": "^1.2.0"
   }
 }
