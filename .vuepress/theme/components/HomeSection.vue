@@ -3,19 +3,19 @@
     <div class="vue-typer-box mx-auto m-5 rounded shadow-md">
       <span class="vue-typer-start">$ </span>
       <ClientOnly>
-      <VueTyper
-        :text="cmd"
-        :pre-type-delay="500"
-        :type-delay="100"
-        :repeat="0"
-        caret-animation="solid"
-        @typed="onDone"
-      ></VueTyper>
+        <VueTyper
+          :text="cmd"
+          :pre-type-delay="500"
+          :type-delay="100"
+          :repeat="0"
+          caret-animation="solid"
+          @typed="onDone"
+        ></VueTyper>
       </ClientOnly>
     </div>
-<transition name="fade">
-    <div v-show="isDone"><slot></slot></div>
-</transition>
+    <transition name="fade">
+      <div v-if="isDone"><slot></slot></div>
+    </transition>
   </section>
 </template>
 
@@ -23,7 +23,12 @@
 import { Vue } from "vue";
 export default {
   props: ["cmd"],
-    components: { VueTyper: () => import("../../../node_modules/vue-typer/dist/vue-typer.min").then(x => x.VueTyper) },
+  components: {
+    VueTyper: () =>
+      import("../../../node_modules/vue-typer/dist/vue-typer.min").then(
+        x => x.VueTyper
+      )
+  },
   data: () => ({
     isDone: false
   }),
@@ -60,5 +65,14 @@ export default {
 .vue-typer .custom.caret {
   width: 10px;
   background-color: #3f51b5;
+}
+
+/*animation*/
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>
