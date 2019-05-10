@@ -2,7 +2,12 @@
   "name": "enigmatrix.github.io",
   "version": "1.0.0",
   "description": "",
-  "scripts": {},
+  "scripts": {
+      "dev": "vuepress dev",
+      "build": "vuepress build",
+      "prod": "vuepress build && live-server .vuepress/dist",
+      "deploy": "./deploy.sh"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Enigmatrix/enigmatrix.github.io.git"

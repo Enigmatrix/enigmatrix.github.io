@@ -8,13 +8,17 @@
 	<div class="p-4 flex flex-col md:block items-center">
 		<h1 id="name1" class="text-4xl md:text-5xl">Chandrasekaran Akash</h1>
 		<h3 id="name2" class="text-xl md:text-2xl mb-8">// Enigmatrix Atheros</h3>
-		<span class="text-lg">Student at NUS High. Codes in C#, TypeScript, Python and others.<br>Loves doing CTFs and Hackathons whenever possible.</span><br><span class="text-xl">Interests include:</span>
-		<ul>
-			<li>CS</li>
-			<li>Math</li>
-			<li>Physics</li>
-			<li>Reverse Engineering/Pwn</li>
-		</ul>
+        <span class="text-lg">Student at NUS High.<br> Codes in C#, TypeScript, Python and others.<br>Loves doing CTFs and Hackathons whenever possible.</span>
+        
+        <div class="md:mt-2 mt-8">
+            <span class="text-xl">Interests include:</span>
+		    <ul>
+			    <li>CS</li>
+			    <li>Math</li>
+			    <li>Physics</li>
+			    <li>Reverse Engineering/Pwn</li>
+		    </ul>
+        </div>
 		<p></p>
 	</div>
     </div>
