@@ -3,7 +3,7 @@
 	<HomeSection class="whoami" cmd="whoami">
 	<div class="flex flex-col md:flex-row items-center justify-center">
 <div class="p-4">
-	<img src="https://avatars2.githubusercontent.com/u/12296254?s=400&u=5e1ffb516172b4a0aebfbd7626ead99bbae39f58&v=4" class="rounded-full shadow-lg">
+	<img src="/PhotoEditor_20190502_132752262.jpg" class="rounded-full shadow-lg">
 </div>
 	<div class="p-4 flex flex-col md:block items-center">
 		<h1 id="name1" class="text-4xl md:text-5xl">Chandrasekaran Akash</h1>
