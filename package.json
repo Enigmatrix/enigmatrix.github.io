@@ -4,6 +4,7 @@
   "description": "",
   "scripts": {
     "dev": "vuepress dev",
+    "eject": "vuepress eject",
     "build": "vuepress build",
     "prod": "vuepress build && live-server .vuepress/dist",
     "deploy": "./deploy.sh"
