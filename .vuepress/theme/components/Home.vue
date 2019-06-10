@@ -1,4 +1,3 @@
-//TODO complete all links?
 <template>
   <main class="home">
     <HomeSection class="whoami" cmd="whoami">
