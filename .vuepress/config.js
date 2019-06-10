@@ -4,15 +4,16 @@ module.exports = {
       directories: [
         {
           // Unique ID of current classification
-          id: 'post',
+          id: "post",
           // Target directory
-          dirname: '_posts',
+          dirname: "_posts",
           // Path of the `entry page` (or `list page`)
-          path: '/',
-        },
-      ],
+          path: "/blog/",
+          itemPermalink: "/blog/:year/:month/:day/:slug"
+        }
+      ]
     },
-    "@silvanite/tailwind": {},
+    "@silvanite/tailwind": {}
   },
   title: "Enigmatrix",
   description: "Enigmatrix's mark on the Web"

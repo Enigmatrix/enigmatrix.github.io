@@ -16,7 +16,7 @@
       <slot name="sidebar-bottom" slot="bottom" />
     </Sidebar>
 
-    <Page :sidebar-items="sidebarItems">
+    <Page :sidebar-items="sidebarItems" style="padding-top: 3.6rem;">
       <slot name="page-top" slot="top" />
       <slot name="page-bottom" slot="bottom" />
     </Page>
