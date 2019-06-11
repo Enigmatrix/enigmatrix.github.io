@@ -3,13 +3,24 @@ module.exports = {
     "@vuepress/blog": {
       directories: [
         {
-          // Unique ID of current classification
           id: "post",
-          // Target directory
           dirname: "_posts",
-          // Path of the `entry page` (or `list page`)
           path: "/blog/",
-          itemPermalink: "/blog/:year/:month/:day/:slug"
+          itemPermalink: "/blog/:year/:month/:day/:slug",
+          pagination: {
+            perPagePosts: 10
+          }
+        }
+      ],
+      frontmatters: [
+        {
+          id: "tag",
+          keys: ["tag", "tags"],
+          path: "/blog/tag/",
+          layout: "Tag",
+          pagination: {
+            perPagePosts: 10
+          }
         }
       ]
     },
