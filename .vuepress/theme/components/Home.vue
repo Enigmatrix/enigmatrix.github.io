@@ -6,8 +6,8 @@
           <img class="rounded-full shadow-lg h-auto w-64 md:mr-8" src="../../../face.jpg">
         </div>
         <div class="p-4 flex flex-col md:block items-center">
-          <h1 id="name1" class="text-4xl md:text-5xl text-center md:text-left">Chandrasekaran Akash</h1>
-          <h3 id="name2" class="text-xl md:text-2xl">// Enigmatrix Atheros</h3>
+          <h1 id="name1" class="text-4xl md:text-5xl text-center md:text-left m-0">Chandrasekaran Akash</h1>
+          <h3 id="name2" class="text-xl md:text-2xl m-0">// Enigmatrix Atheros</h3>
           <div class="flex flex-row mb-8 mt-1">
             <a class="text-grey-lighter contact-link" href="mailto:enigmatrix2000@gmail.com">
               <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24">
@@ -52,7 +52,7 @@
                 ></path>
               </svg>
             </a>-->
-            <a class="p-1 text-center self-center ml-1 border-2 font-bold border-orange text-orange rounded" href="blog">BLOG
+            <a class="p-1 text-center self-center ml-1 border-solid border-2 font-bold border-orange text-orange rounded" href="blog">BLOG
             </a>
           </div>
           <span class="text-lg">
@@ -74,7 +74,7 @@
           <Project
             name="Cobalt"
             desc="An app to monitor and view app usage statistics"
-            img="https://github.com/Enigmatrix/Cobalt/blob/master/images/icon_512.png?raw=true"
+            img="https://raw.githubusercontent.com/Enigmatrix/Cobalt/master/images/icon_512.png"
             gh-link="https://github.com/Enigmatrix/Cobalt"
             project-link="/projects/cobalt.html"
           ></Project>

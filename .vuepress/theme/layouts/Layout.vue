@@ -31,13 +31,14 @@
 
     <Home v-if="$page.frontmatter.home"/>
     <Page
-      v-else
+        v-else :custom="custom"
       :sidebar-items="sidebarItems"
     >
       <slot
         name="page-top"
         slot="top"
       />
+      <slot/>
       <slot
         name="page-bottom"
         slot="bottom"
@@ -55,7 +56,7 @@ import { resolveSidebarItems } from '../util'
 
 export default {
   components: { Home, Page, Sidebar, Navbar },
-
+    props: ['custom'],
   data () {
     return {
       isSidebarOpen: false

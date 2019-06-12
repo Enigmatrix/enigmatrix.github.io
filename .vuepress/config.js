@@ -14,9 +14,9 @@ module.exports = {
       ],
       frontmatters: [
         {
-          id: "tag",
-          keys: ["tag", "tags"],
-          path: "/blog/tag/",
+          id: "tags",
+          keys: ["tags"],
+          path: "/tags/",
           layout: "Tag",
           pagination: {
             perPagePosts: 10
@@ -24,8 +24,18 @@ module.exports = {
         }
       ]
     },
-    "@silvanite/tailwind": {}
+    "@silvanite/tailwind": {},
+    "disqus": {}
   },
   title: "Enigmatrix",
-  description: "Enigmatrix's mark on the Web"
+  description: "Enigmatrix's mark on the Web",
+  head: [["link", { rel: "icon", href: "/favicon.png" }]],
+  themeConfig: {
+    nav: [
+        { text: "Blog", link: "/blog/" },
+      { text: "Tags", link: "/tags/" },
+      { text: "Notes", link: "/notes/" },
+    ]
+  },
+  evergreen: true
 };

@@ -5,7 +5,7 @@
       <div class="flex">
 
         <a v-if="projectLink" :href="projectLink" class="name-link flex items-center">
-          <h2 class="name text-3xl md:text-5xl">{{ name }}</h2>
+          <h2 class="name text-3xl md:text-5xl m-0">{{ name }}</h2>
           <svg class="proj w-8 h-8 md:w-12 md:h-12 ml-2 md:ml-4" viewBox="0 0 24 24">
             <path
               d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z"
@@ -13,7 +13,7 @@
           </svg>
         </a>
 
-        <h2 v-else class="name text-3xl md:text-5xl">{{ name }}</h2>
+        <h2 v-else class="name text-3xl md:text-5xl m-0">{{ name }}</h2>
 
         <a :href="ghLink">
           <svg class="gh w-8 h-8 md:w-12 md:h-12 ml-2 md:ml-4" viewBox="0 0 24 24">

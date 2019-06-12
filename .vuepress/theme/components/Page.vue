@@ -2,7 +2,8 @@
   <main class="page">
     <slot name="top"/>
 
-    <Content class="theme-default-content"/>
+    <slot class="theme-default-content" v-if="custom"/>
+    <Content class="theme-default-content" v-else/>
 
     <footer class="page-edit">
       <div
@@ -65,7 +66,7 @@
 import { resolvePage, outboundRE, endingSlashRE } from '../util'
 
 export default {
-  props: ['sidebarItems'],
+  props: ['sidebarItems', 'custom'],
 
   computed: {
     lastUpdated () {

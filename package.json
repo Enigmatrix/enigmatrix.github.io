@@ -22,7 +22,8 @@
   "dependencies": {
     "@silvanite/vuepress-plugin-tailwind": "^1.1.0",
     "@vuepress/plugin-blog": "^1.0.0",
+    "vue-typer": "^1.2.0",
     "vuepress": "^1.0.0",
-    "vue-typer": "^1.2.0"
+    "vuepress-plugin-disqus": "^0.1.1"
   }
 }
