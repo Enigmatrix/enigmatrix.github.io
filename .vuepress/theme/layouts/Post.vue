@@ -10,7 +10,7 @@
       <div class="font-mono text-grey-darker my-2 text-2xl">{{$page.frontmatter.desc}}</div>
       <div class="py-2">
         <a
-          class="inline mr-2 font-bold"
+          class="inline mr-2 font-bold text-xl"
           v-for="tag in $page.frontmatter.tags"
           :href="`/tags/${tag}/`"
         >{{tag}}</a>
