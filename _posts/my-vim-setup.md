@@ -1,12 +1,11 @@
 ---
 date: Wed 12 Jun 2019 12:12:28 PM
 desc: How I setup my Vim so that I can be productive.
+title: My Vim Setup
 tags:
   - vim
   - config
 ---
-
-# My Vim Setup
 
 `Vim` is probably one of the most powerful text editors out there. I use it for working on my projects, writing quick scripts, and even writing this blog post. I've setup my `vim` to be a JavaScript, TypeScript and Python IDE, without much performance degradation. 'How is that even possible?', you might ask. 'Vim cannot be an IDE!', shouts the unconvinced watcher. Just read on :smiley:
 

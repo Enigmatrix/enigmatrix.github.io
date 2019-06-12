@@ -1,6 +1,6 @@
 <template>
   <Layout :custom="true">
-    <div class="theme-default-content">
+    <div>
       <ul>
         <div class="text-5xl">{{$route.meta.id}}</div>
         <div>

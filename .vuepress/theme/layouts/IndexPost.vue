@@ -1,6 +1,6 @@
 <template>
   <Layout :custom="true">
-    <div class="theme-default-content">
+    <div>
       <!--<div>{{$pagination}}</div>-->
       <ul class>
         <div v-for="page in $pagination.pages">

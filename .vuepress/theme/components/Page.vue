@@ -1,9 +1,10 @@
 <template>
   <main class="page">
+    <div class="theme-default-content">
     <slot name="top"/>
 
-    <slot class="theme-default-content" v-if="custom"/>
-    <Content class="theme-default-content" v-else/>
+    <slot v-if="custom"/>
+    <Content v-else/>
 
     <footer class="page-edit">
       <div
@@ -59,6 +60,7 @@
     </div>
 
     <slot name="bottom"/>
+    </div>
   </main>
 </template>
 

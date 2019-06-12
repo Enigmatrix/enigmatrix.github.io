@@ -1,6 +1,6 @@
 <template>
   <Layout :custom="true">
-      <div class="theme-default-content">
+      <div>
           <ul>
               <div v-for="tag in $tags.list" class="py-6">
                   <a class="text-5xl" :href="tag.path">{{tag.name}}</a>
