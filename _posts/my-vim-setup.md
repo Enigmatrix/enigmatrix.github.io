@@ -354,7 +354,7 @@ let g:airline_theme = 'codedark'
 let g:Vsd.contrast = 2  " high
 ```
 
-Look at that :open_mouth:, doesn't it look just like Visual Studio ~~~Code~~~? Besides, with all the functionality available, I can honestly say that it feels just like Visual Studio (well, Visual Studio Code), but with a better editing experience with smoother performance.
+Look at that :open_mouth:, doesn't it look just like Visual Studio ~~Code~~? Besides, with all the functionality available, I can honestly say that it feels just like Visual Studio (well, Visual Studio Code only, really), but with a better editing experience and with smoother performance.
 
 ## Conclusion
 Honestly, I don't think anyone would want to recreate the entirety of my setup. It might bring too many bad memories to people who have converted to `vim` in Linux from actual IDEs in Windows. Just in case there actually are, here are my [dotfiles](https://github.com/Enigmatrix/dotfiles), and you can find my actual [inti.vim](https://github.com/Enigmatrix/dotfiles/blob/master/linux/core/.config/nvim/init.vim) there. There are keymappings there, too, along with other plugins such as `UltiSnips` and convenience features.
