@@ -4,7 +4,7 @@
       <span class="vue-typer-start">$</span>
       <ClientOnly>
         <VueTyper
-          :text="shouldStart ? cmd : ''"
+          :text="shouldStart ? cmd : ' '"
           :pre-type-delay="500"
           :type-delay="100"
           :repeat="0"
@@ -33,7 +33,10 @@ export default {
   },
   mounted() {
     const observer = new IntersectionObserver(x => {
-      if (!this.shouldStart) this.shouldStart = !!x && x[0].isIntersecting;
+      this.shouldStart = !!x && x[0].isIntersecting;
+      if (!this.shouldStart) return;
+      observer.unobserve(this.$refs.typer);
+      observer.disconnect();
     });
     observer.observe(this.$refs.typer);
   },
