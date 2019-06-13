@@ -1,6 +1,6 @@
 <template>
   <div class="py-4">
-    <div class="text-grey-dark text-sm">{{humanDate(page.frontmatter.date)}}</div>
+    <div class="text-grey-dark text-sm">{{humanDate(page.frontmatter.date)}} <span class="mx-1">•</span> {{page.readingTime.text }}</div>
     <router-link
       class="page-link underline text-2xl text-grey-darkest font-extrabold font-mono"
       :to="page.path"

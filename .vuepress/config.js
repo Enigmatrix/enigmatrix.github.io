@@ -26,6 +26,7 @@ module.exports = {
     },
     "@silvanite/tailwind": {},
     "disqus": {},
+    "reading-time": {},
     "@vuepress/google-analytics": {
       ga: "UA-133289104-1"
     }

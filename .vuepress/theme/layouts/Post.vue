@@ -2,7 +2,7 @@
   <Layout>
     <template v-slot:page-top>
       <div>
-        <div class="text-grey-dark text-sm">{{humanDate($page.frontmatter.date)}}</div>
+    <div class="text-grey-dark text-sm">{{humanDate($page.frontmatter.date)}} <span class="mx-1">•</span> {{$page.readingTime.text }}</div>
         <h1
           class="page-link text-4xl md:text-5xl text-grey-darkest font-extrabold font-mono my-2"
         >{{ $page.title }}</h1>
