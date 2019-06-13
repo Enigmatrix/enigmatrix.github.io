@@ -1,8 +1,8 @@
 <template>
   <Layout :custom="true">
     <div>
-      <!--<div>{{$pagination}}</div>-->
-      <ul class>
+      <h1 class="py-4">Blog</h1>
+      <ul class="m-0 p-0">
         <div v-for="page in $pagination.pages">
             <PostSummary :page="page"/>
         </div>

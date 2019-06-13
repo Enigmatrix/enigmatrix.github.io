@@ -2,7 +2,7 @@
   <Layout :custom="true">
     <div>
       <ul>
-        <div class="text-5xl">{{$route.meta.id}}</div>
+        <h1 class="text-5xl">{{$route.meta.id}}</h1>
         <div>
           <PostSummary v-for="page in $pagination.pages" :page="page"/>
         </div>
