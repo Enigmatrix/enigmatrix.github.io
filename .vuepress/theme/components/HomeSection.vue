@@ -13,8 +13,8 @@
         ></VueTyper>
       </ClientOnly>
     </div>
-    <transition name="fade">
-      <div v-if="isDone"><slot></slot></div>
+    <transition name="fade" mode="out-in">
+    <div :key="isDone" :style="{visibility: isDone ? 'visible':'hidden'}"><slot></slot></div>
     </transition>
   </section>
 </template>
@@ -68,11 +68,10 @@ export default {
 }
 
 /*animation*/
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s;
+.fade-enter-active {
+  transition: opacity 1.0s;
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+.fade-enter /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
 }
 </style>
