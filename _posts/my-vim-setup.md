@@ -7,7 +7,11 @@ tags:
   - config
 ---
 
-`Vim` is probably one of the most powerful text editors out there. I use it for working on my projects, writing quick scripts, and even writing this blog post. I've setup my `vim` to be a JavaScript, TypeScript and Python IDE, without much performance degradation. 'How is that even possible?', you might ask. 'Vim cannot be an IDE!', shouts the unconvinced watcher. Just read on :smiley:
+`Vim` is probably one of the most powerful text editors out there. I use it for working on my projects, writing quick scripts, and even writing this blog post. I've setup my `vim` to be a JavaScript, TypeScript and Python IDE, without much performance degradation. 'How is that even possible?', you might ask. 'Vim cannot be an IDE!', shouts the unconvinced watcher. Well, heres my `vim`:
+
+![awesome-vim-usage.gif](./awesome-vim-usage.gif)
+
+So, just read on :smiley:
 
 ## Let's Start!
 
@@ -165,7 +169,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 ```
 
-Here is some configuration:
+Note that you have will also have to install and set your terminal font to one of the available [nerd-fonts](https://github.com/ryanoasis/nerd-fonts) so that the icons will appear. I personally use [FuraCode](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/FiraCode), which has ligatures for programming languages (needs terminal support, of course). Here is the configuration for the plugins:
 
 ``` vim
 let g:NERDTreeShowHidden = 1
@@ -197,6 +201,10 @@ let g:DevIconsEnableFolderPatternMatching = 1
 let g:DevIconsEnableFolderExtensionPatternMatching = 1
 let WebDevIconsUnicodeDecorateFolderNodesExactMatches = 1
 ```
+
+After that, you can run `:NERDTreeToggle` to toggle your 'file explorer' window on and off.
+
+![nerd-tree-example](./nerd-tree-example.png)
 
 ## Status bar and Startup page
 
@@ -235,9 +243,16 @@ let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_
 
 ```
 
+Now, if you open up your `vim` with no arguments, you can see this:
+![vim-startup.png](./vim-startup.png)
+
 ## Searching
 
-Visual Studio with [Resharper](https://www.jetbrains.com/resharper/) had this awesome feature: global fuzzy search with `CTRL+T`. You can search absolutely anything, from files to even text in files, across the entire project. We can make `neovim` have this feature too, via `denite`. However, for in-file searching, the above might be overkill, and might actually slow you down with too may results. We should aim to use the default vim search, `/<search>` for it. We will be enhancing it, of course :smile:, with `incsearch`, which highlights all instances of the search term, as you type the term.
+Visual Studio with [Resharper](https://www.jetbrains.com/resharper/) had this awesome feature: global fuzzy search with `CTRL+T`. You can search absolutely anything, from files to even text in files, across the entire project. We can make `neovim` have this feature too, via `denite`. However, for in-file searching, the above might be overkill, and might actually slow you down with too may results. We should aim to use the default vim search, `/<search>` for it. We will be enhancing it, of course :smile:, with `incsearch`, which highlights all instances of the search term, as you type the term. Here is an example of what I mean:
+
+![search-example.gif](./search-example.gif)
+
+Here are the necessary plugin lines to replicate that:
 
 ``` vim
 Plug 'haya14busa/incsearch.vim'
@@ -310,7 +325,7 @@ It uses `_` instead of `CTRL-T`, but that is just due to my personal preference 
 
 ## Git integration
 
-No IDE is complete without source ontrol integration. I only use [`git`](https://git-scm.com/), so i've used the best plugins for it.
+No IDE is complete without source control integration. I only use [`git`](https://git-scm.com/), so i've used the best plugins for it.
 
 ``` vim
 Plug 'airblade/vim-gitgutter'
@@ -318,6 +333,8 @@ Plug 'tpope/vim-fugitive'
 ```
 
 `vim-gitgutter` adds a gutter to the left of your code that displays the git status of the line to the right of it. e.g. if a line is added, it will show `+`, changed will be `~` and so on. `vim-fugitive` adds a shitton of `git` commands as `vim` commands, and provides tight integration between both.
+
+![gitgutter-example.png](./gitgutter-example.png)
 
 ## Aesthetics
 
@@ -331,6 +348,8 @@ Anyway, let's make it _look_ like Visual Studio too. Add these plugins:
 Plug 'tomasiser/vim-code-dark'
 Plug 'mg979/vim-studio-dark'
 ```
+
+Next, set up the background as such:
 
 ``` vim
 
@@ -353,6 +372,8 @@ colorscheme vsdark
 let g:airline_theme = 'codedark'
 let g:Vsd.contrast = 2  " high
 ```
+
+![final-vim.png](./final-vim.png)
 
 Look at that :open_mouth:, doesn't it look just like Visual Studio ~~Code~~? Besides, with all the functionality available, I can honestly say that it feels just like Visual Studio (well, Visual Studio Code only, really), but with a better editing experience and with smoother performance.
 
