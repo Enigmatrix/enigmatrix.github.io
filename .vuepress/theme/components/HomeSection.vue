@@ -1,10 +1,10 @@
 <template>
   <section class="flex flex-col">
-    <div class="vue-typer-box mx-auto m-5 rounded shadow-md">
-      <span class="vue-typer-start">$ </span>
+    <div class="vue-typer-box mx-auto m-5 rounded shadow-md" ref="typer">
+      <span class="vue-typer-start">$</span>
       <ClientOnly>
         <VueTyper
-          :text="cmd"
+          :text="shouldStart ? cmd : ''"
           :pre-type-delay="500"
           :type-delay="100"
           :repeat="0"
@@ -14,7 +14,9 @@
       </ClientOnly>
     </div>
     <transition name="fade" mode="out-in">
-    <div :key="isDone" :style="{visibility: isDone ? 'visible':'hidden'}"><slot></slot></div>
+      <div :key="isDone" :style="{visibility: isDone ? 'visible':'hidden'}">
+        <slot></slot>
+      </div>
     </transition>
   </section>
 </template>
@@ -29,12 +31,19 @@ export default {
         x => x.VueTyper
       )
   },
+  mounted() {
+    const observer = new IntersectionObserver(x => {
+      if (!this.shouldStart) this.shouldStart = !!x && x[0].isIntersecting;
+    });
+    observer.observe(this.$refs.typer);
+  },
   data: () => ({
-    isDone: false
+    isDone: false,
+    shouldStart: false
   }),
   methods: {
     onDone() {
-      this.isDone = true;
+      if (this.shouldStart) this.isDone = true;
     }
   }
 };
@@ -69,7 +78,7 @@ export default {
 
 /*animation*/
 .fade-enter-active {
-  transition: opacity 1.0s;
+  transition: opacity 1s;
 }
 .fade-enter /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
