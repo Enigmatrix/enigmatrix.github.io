@@ -1,6 +1,6 @@
 <template>
   <section class="flex flex-col">
-    <div class="vue-typer-box mx-auto m-5 rounded shadow-md" ref="typer">
+    <div class="vue-typer-box mx-auto m-8 rounded shadow-md" ref="typer">
       <span class="vue-typer-start">$</span>
       <ClientOnly>
         <VueTyper

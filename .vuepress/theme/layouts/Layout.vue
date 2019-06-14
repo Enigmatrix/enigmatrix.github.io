@@ -8,6 +8,7 @@
     <Navbar
       v-if="shouldShowNavbar"
       @toggle-sidebar="toggleSidebar"
+      :home="$page.frontmatter.home"
     />
 
     <div

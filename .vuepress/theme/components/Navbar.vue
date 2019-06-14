@@ -1,5 +1,5 @@
 <template>
-  <header class="navbar">
+  <header :class="{navbar:true, home: home}">
     <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')"/>
 
     <router-link
@@ -44,7 +44,7 @@ import NavLinks from '@theme/components/NavLinks.vue'
 
 export default {
   components: { SidebarButton, NavLinks, SearchBox, AlgoliaSearchBox },
-
+  props: ['home'],
   data () {
     return {
       linksWrapMaxWidth: null
@@ -125,4 +125,20 @@ $navbar-horizontal-padding = 1.5rem
       display none
     .links
       padding-left 1.5rem
+
+.navbar.home
+  background transparent
+  border 0
+  .site-name
+    visibility collapse
+  .sidebar-button
+    color #ccc
+  .nav-link
+    color #ccc
+  .nav-link:hover
+    color #aaa
+  @media (max-width: 959px)
+    .search-box input:not(.focused)
+      background-color transparent
+  
 </style>
