@@ -129,6 +129,7 @@ $navbar-horizontal-padding = 1.5rem
 .navbar.home
   background transparent
   border 0
+  position absolute
   .site-name
     visibility collapse
   .sidebar-button

@@ -5,7 +5,7 @@
       <ClientOnly>
         <VueTyper
           :text="shouldStart ? cmd : ' '"
-          :pre-type-delay="500"
+          :pre-type-delay="50"
           :type-delay="100"
           :repeat="0"
           caret-animation="solid"
