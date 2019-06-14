@@ -59,9 +59,9 @@
               <p class="mb-2 leading-none">Student of NUS High School.</p>
             <p
               class="mb-2 leading-none"
-            >Just curious about computers and about how to improve people's lives through technology.</p>
-            <p class="mb-2 leading-none">A world without ignorance, bias, and fear: that is my goal.</p>
-            <p class="mb-2 leading-none">Seeks greater knowledge for the fulfillment of my goal. After all, <b><i>scientia potentia est</i></b>.</p>
+            >Just a guy curious about computers and about how to improve people's lives through technology.</p>
+            <p class="mb-2 leading-none">I believe the road to greatness requires the acquirement of knowledge.</p>
+            <p class="mb-2 leading-none">My motto is <i class="text-orange">scientia potentia est</i></b>.</p>
             <p class="mb-2 leading-none">Loves doing CTFs and Hackathons whenever possible.</p>
           </span>
         </div>
