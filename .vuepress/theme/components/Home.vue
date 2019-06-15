@@ -102,23 +102,23 @@
       </div>
     </HomeSection>
 
-    <HomeSection class="contacts" cmd="cat *.skill">
+    <HomeSection class="contacts" cmd="cat *.lst">
     <div class="flex flex-col items-center text-center">
         <div class=" max-w-xs md:max-w-sm">
-            <h3>Languages</h3>
-            <span>C# &#9679 Python &#9679 TypeScript &#9679 JavaScript &#9679 HTML5/CSS3 &#9679 Rust &#9679 C/C++ &#9679 F# &#9679 English &#9679 Tamil</span>
+            <h3 class="text-3xl">Languages</h3>
+            <span class="text-xl">C# &#9679 Python &#9679 TypeScript &#9679 JavaScript &#9679 HTML5/CSS3 &#9679 Rust &#9679 Java &#9679 C/C++ &#9679 F# &#9679 English &#9679 Tamil</span>
         </div>
         <div class=" max-w-xs md:max-w-sm">
-            <h3>Tools</h3>
-            <span>Visual Studio &#9679 Visual Studio Code &#9679 NeoVim &#9679 Pwntools &#9679 Radare2 &#9679 Terminator &#9679 Heroku &#9679 Azure</span>
+            <h3 class="text-3xl">Tools</h3>
+            <span class="text-xl">Visual Studio &#9679 Visual Studio Code &#9679 NeoVim &#9679 Pwntools &#9679 Radare2 &#9679 Vue &#9679 VuePress &#9679 React &#9679 Electron &#9679 Radare2 &#9679 Terminator &#9679 Heroku &#9679 Azure</span>
         </div>
         <div class=" max-w-xs md:max-w-sm">
-            <h3>Areas of Experience</h3>
-            <span>Reversing/Binary Exploitation &#9679 Vue &#9679 Web Technologies &#9679 Windows Internals &#9679 Linux &#9679 Devops &#9679 Azure &amp; other cloud platforms &#9679 Graphics Design</span>
+            <h3 class="text-3xl">Areas of Experience</h3>
+            <span class="text-xl">Reversing/Binary Exploitation &#9679 Vue &#9679 Web Technologies &#9679 Windows Internals &#9679 Linux &#9679 Devops &#9679 Azure &amp; other cloud platforms &#9679 Mobile Development &#9679 Cross-platform development &#9679 Graphics Design</span>
         </div>
         <div class=" max-w-xs md:max-w-sm">
-            <h3>Areas of Interest</h3>
-            <span>Machine Learning/AI &#9679 IoT &#9679 Malware &#9679 Hardware &#9679 Math and Physics</span>
+            <h3 class="text-3xl">Areas of Interest</h3>
+            <span class="text-xl">Machine Learning/AI &#9679 IoT &#9679 Malware &#9679 Hardware &#9679 Math and Physics</span>
         </div>
     </div>
     </HomeSection>
