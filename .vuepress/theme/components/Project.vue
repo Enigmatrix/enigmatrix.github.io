@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center mb-8 md:mb-16">
+  <div class="flex items-center mb-8 md:mb-16 proj">
     <img :src="img" class="w-16 h-16 mr-4 md:w-32 md:h-32" />
     <div class="m-2">
       <div class="flex">
@@ -60,7 +60,7 @@ export default {
   margin-left: 10px;
   margin-top: 4px;
 }
-a > svg:hover {
+.proj > a > svg:hover {
   fill: #2779bd;
 }
 </style>

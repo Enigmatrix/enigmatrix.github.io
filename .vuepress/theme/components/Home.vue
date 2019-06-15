@@ -76,21 +76,21 @@
             desc="An app to monitor and view app usage statistics"
             img="https://raw.githubusercontent.com/Enigmatrix/Cobalt/master/images/icon_512.png"
             gh-link="https://github.com/Enigmatrix/Cobalt"
-            project-link="/projects/cobalt.html"
+            project-link="/projects/cobalt/"
           ></Project>
           <Project
             name="TimeKeeper"
             desc="Project I made that helps me keep track of time"
             img="https://static.vecteezy.com/system/resources/previews/000/441/423/non_2x/vector-clock-icon.jpg"
             gh-link="https://github.com/Enigmatrix/TimeKeeper/"
-            project-link="/projects/timekeeper.html"
+            project-link="/projects/timekeeper/"
           ></Project>
           <Project
             name="ctfbot"
             desc="CTF Bot for Discord"
             img="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCNYxLGCT2h9MqwaDHsEEadyO6wQbMmV_eih6N5FANYFTJHTnRIg"
             gh-link="https://github.com/Enigmatrix/ctfbot"
-            project-link="/projects/ctfbot.html"
+            project-link="/projects/ctfbot/"
           ></Project>
           <Project
             name="with_libc"

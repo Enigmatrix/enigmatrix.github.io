@@ -31,6 +31,7 @@
     </Sidebar>
 
     <Home v-if="$page.frontmatter.home"/>
+    <div v-else-if="customslot"><slot/></div>
     <Page
         v-else :custom="custom"
       :sidebar-items="sidebarItems"
@@ -57,7 +58,7 @@ import { resolveSidebarItems } from '../util'
 
 export default {
   components: { Home, Page, Sidebar, Navbar },
-    props: ['custom'],
+    props: ['custom', "customslot"],
   data () {
     return {
       isSidebarOpen: false
