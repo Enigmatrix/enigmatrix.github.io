@@ -4,7 +4,6 @@ title: Dark Ghidra Setup
 desc: How to setup Ghidra to have a eye-pleasing dark mode
 tags:
   - ghidra
-  - dark
   - config
 ---
 
