@@ -1,6 +1,6 @@
 ---
 date: Wed 12 Jun 2019 12:12:28 PM
-desc: How I setup my Vim so that I can be productive.
+description: How I setup my Vim so that I can be productive.
 title: My Vim Setup
 tags:
   - vim

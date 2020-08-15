@@ -5,7 +5,7 @@
       class="page-link underline text-2xl text-gray-900 font-extrabold font-mono"
       :to="page.path"
     >{{ page.title }}</router-link>
-    <div class="font-mono text-gray-600">{{page.frontmatter.desc}}</div>
+    <div class="font-mono text-gray-600">{{page.frontmatter.description}}</div>
     <div>
       <a
         class="inline mr-2 font-bold"

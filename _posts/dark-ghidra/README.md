@@ -1,7 +1,7 @@
 ---
 date: Sat Nov 30 14:00:33 +08 2019
 title: Dark Ghidra Setup
-desc: How to setup Ghidra to have a eye-pleasing dark mode
+description: How to setup Ghidra to have a eye-pleasing dark mode
 tags:
   - ghidra
   - config
