@@ -22,7 +22,7 @@
         <h3 class="text-xl">An app to monitor and view app usage statistics for your desktop.</h3>
         <div class="pb-4 inline-flex items-center">
           <a
-            class="border-2 text-white bg-orange-dark shadow-md rounded p-2 inline-flex items-center font-bold"
+            class="border-2 text-gray-300 bg-orange-500 shadow-md rounded p-2 inline-flex items-center font-bold"
             :href="stableLink"
           >
             <svg viewBox="0 0 24 24" class="fill-current w-6 h-6">

@@ -2,11 +2,11 @@
   <Layout>
     <template v-slot:page-top>
       <div>
-    <div class="text-grey-dark text-sm">{{humanDate($page.frontmatter.date)}} <span class="mx-1">•</span> {{$page.readingTime.text }}</div>
+    <div class="text-gray-700 text-sm">{{humanDate($page.frontmatter.date)}} <span class="mx-1">•</span> {{$page.readingTime.text }}</div>
         <h1
-          class="page-link text-4xl md:text-5xl text-grey-darkest font-extrabold font-mono my-2"
+          class="page-link text-4xl md:text-5xl text-grey-900 font-extrabold font-mono my-2"
         >{{ $page.title }}</h1>
-        <div class="font-mono text-grey-darker my-2 text-xl md:text-2xl">{{$page.frontmatter.desc}}</div>
+        <div class="font-mono text-grey-800 my-2 text-xl md:text-2xl">{{$page.frontmatter.desc}}</div>
         <div class="py-2">
           <a
             class="inline mr-2 font-bold md:text-xl"
