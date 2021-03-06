@@ -1,6 +1,6 @@
 ---
 description: How I setup my Vim so that I can be productive.
-date: 2018-09-09 08:00 AM UTC
+date: 2019-06-12 08:00 AM UTC
 title: My Vim Setup
 tags:
   - vim

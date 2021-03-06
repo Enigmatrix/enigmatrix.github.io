@@ -1,5 +1,16 @@
 // .vuepress/config.js
 module.exports = {
+  title: "Enigmatrix",
+  description: "Enigmatrix's mark on the Web",
+  head: [["link", { rel: "icon", href: "/favicon.png" }]],
+
+  themeConfig: {
+    nav: [
+      { text: "Blog", link: "/blog/" },
+      { text: "Tags", link: "/tags/" },
+    ]
+  },
+
   plugins: [
     ['@vuepress/blog', {
       directories: [
@@ -16,7 +27,7 @@ module.exports = {
           keys: ['tag', 'tags'],
           path: '/tags/',
           layout: 'Tags',
-          scopeLayout: 'Tag'
+          scopeLayout: 'Tag',
         },
       ],
       comment: {
