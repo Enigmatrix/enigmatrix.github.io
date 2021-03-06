@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "dev": "vuepress dev",
+    "build": "vuepress build"
+  },
+  "devDependencies": {
+    "@vuepress/plugin-blog": "^1.9.4",
+    "vuepress": "^1.8.2",
+    "vuepress-plugin-disqus": "^0.2.0"
+  }
+}
