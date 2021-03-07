@@ -1,31 +1,11 @@
 {
-  "name": "enigmatrix.github.io",
-  "version": "1.0.0",
-  "description": "",
   "scripts": {
     "dev": "vuepress dev",
-    "eject": "vuepress eject",
-    "build": "vuepress build",
-    "prod": "vuepress build && live-server .vuepress/dist",
-    "deploy": "./deploy.sh"
+    "build": "vuepress build"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Enigmatrix/enigmatrix.github.io.git"
-  },
-  "author": "Enigmatrix",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Enigmatrix/enigmatrix.github.io/issues"
-  },
-  "homepage": "https://github.com/Enigmatrix/enigmatrix.github.io#readme",
-  "dependencies": {
-    "@silvanite/vuepress-plugin-tailwind": "^1.1.0",
-    "@vuepress/plugin-blog": "^1.5.0",
-    "@vuepress/plugin-google-analytics": "^1.0.1",
-    "vue-typer": "^1.2.0",
-    "vuepress": "^1.0.0",
-    "vuepress-plugin-disqus": "^0.1.1",
-    "vuepress-plugin-reading-time": "^0.1.1"
+  "devDependencies": {
+    "@vuepress/plugin-blog": "^1.9.4",
+    "vuepress": "^1.8.2",
+    "vuepress-plugin-disqus": "^0.2.0"
   }
 }

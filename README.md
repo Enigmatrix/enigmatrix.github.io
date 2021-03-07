@@ -1,3 +1,1 @@
----
-home: true
----
+Please visit later, site is under renovation :)

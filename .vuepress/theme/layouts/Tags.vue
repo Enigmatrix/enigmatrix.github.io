@@ -2,9 +2,10 @@
 <Layout>
   <template v-slot:page-top>
   <div class="theme-default-content">
-    <a class="tag-name" :href="$currentTag.path">{{$currentTag.key}}</a>
-    <PostHeader v-for="post in $pagination.pages" :post="post" />
-    <Pagination />
+    <section v-for="tag in $frontmatterKey.list">
+      <a class="tag-name" :href="tag.path">{{tag.name}}</a>
+      <PostHeader v-for="post in tag.pages" :post="post" />
+    </section>
   </div>
   </template>
 </Layout>
@@ -21,12 +22,8 @@
 
 <script>
 import PostHeader from '@theme/components/PostHeader';
-import {
-  Pagination,
-} from '@vuepress/plugin-blog/lib/client/components';
 
 export default {
-  components: {PostHeader, Pagination},
+  components: {PostHeader},
 }
 </script>
-

@@ -1,36 +1,5 @@
+// .vuepress/config.js
 module.exports = {
-  plugins: {
-    "@vuepress/blog": {
-      directories: [
-        {
-          id: "post",
-          dirname: "_posts",
-          path: "/blog/",
-          itemPermalink: "/blog/:year/:month/:day/:slug",
-          pagination: {
-            perPagePosts: 10
-          }
-        }
-      ],
-      frontmatters: [
-        {
-          id: "tags",
-          keys: ["tags"],
-          path: "/tags/",
-          layout: "Tag",
-          pagination: {
-            perPagePosts: 10
-          }
-        }
-      ]
-    },
-    "@silvanite/tailwind": {},
-    "disqus": {},
-    "reading-time": {},
-    "@vuepress/google-analytics": {
-      ga: "UA-133289104-1"
-    }
-  },
   title: "Enigmatrix",
   description: "Enigmatrix's mark on the Web",
   head: [["link", { rel: "icon", href: "/favicon.png" }]],
@@ -39,8 +8,32 @@ module.exports = {
     nav: [
       { text: "Blog", link: "/blog/" },
       { text: "Tags", link: "/tags/" },
-      { text: "Notes", link: "/notes/" }
     ]
   },
-  evergreen: true
-};
+
+  plugins: [
+    ['@vuepress/blog', {
+      directories: [
+        {
+          id: 'blog',
+          dirname: '_blog',
+          path: '/blog/',
+          itemPermalink: '/blog/:year/:month/:day/:slug',
+        },
+      ],
+      frontmatters: [
+        {
+          id: 'tag',
+          keys: ['tag', 'tags'],
+          path: '/tags/',
+          layout: 'Tags',
+          scopeLayout: 'Tag',
+        },
+      ],
+      comment: {
+        service: 'disqus',
+        shortname: 'enigmatrixblog',
+      }
+    }]
+  ]
+}

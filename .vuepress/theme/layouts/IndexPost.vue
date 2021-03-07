@@ -1,23 +1,27 @@
 <template>
-  <Layout :custom="true">
-    <div>
-      <h1 class="py-4">Blog</h1>
-      <ul class="m-0 p-0">
-        <div v-for="page in $pagination.pages">
-            <PostSummary :page="page"/>
-        </div>
-      </ul>
-      <div id="pagination">
-        <router-link v-if="$pagination.hasPrev" :to="$pagination.prevLink">Prev</router-link>
-        <router-link v-if="$pagination.hasNext" :to="$pagination.nextLink">Next</router-link>
-      </div>
-    </div>
-  </Layout>
+<Layout>
+  <template v-slot:page-top>
+  <div class="theme-default-content">
+    <h1>Blog</h1>
+    <PostHeader v-for="post in $pagination.pages" :post="post" />
+    <Pagination/>
+  </div>
+  </template>
+</Layout>
 </template>
 
 <script>
-import PostSummary from "@theme/components/PostSummary.vue";
+import {
+  Pagination,
+} from '@vuepress/plugin-blog/lib/client/components';
+import PostHeader from '@theme/components/PostHeader';
+
 export default {
-  components: { PostSummary },
-};
+  components: {Pagination, PostHeader},
+}
 </script>
+
+<style lang="stylus" scoped>
+h1
+  padding 2rem 0
+</style>
