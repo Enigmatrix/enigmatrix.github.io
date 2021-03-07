@@ -1,5 +1,5 @@
 ---
-date: 2021-03-06 06:30 PM
+date: 2021-03-06 06:30 PM UTC
 title: DSO NUS 2021 CTF - Task Tracker (Pwn)
 description: When you have a statically linked binary with too many vulns
 tags:
