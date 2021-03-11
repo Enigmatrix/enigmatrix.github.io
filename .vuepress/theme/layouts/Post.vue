@@ -11,7 +11,7 @@
       </div>
     </template>
     <template v-slot:page-bottom>
-      <Comment />
+      <Comment class="theme-default-content"/>
     </template>
   </Layout>
 </template>
