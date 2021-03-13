@@ -3,9 +3,12 @@
     "dev": "vuepress dev",
     "build": "vuepress build"
   },
-  "devDependencies": {
+  "dependencies": {
+    "@kawarimidoll/vuepress-plugin-tailwind": "^2.0.0",
     "@vuepress/plugin-blog": "^1.9.4",
+    "vue-typer": "^1.2.0",
     "vuepress": "^1.8.2",
-    "vuepress-plugin-disqus": "^0.2.0"
+    "vuepress-plugin-disqus": "^0.2.0",
+    "vuepress-plugin-reading-time": "^0.1.1"
   }
 }

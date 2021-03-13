@@ -12,6 +12,7 @@ module.exports = {
   },
 
   plugins: [
+    "@kawarimidoll/tailwind",
     ['@vuepress/blog', {
       directories: [
         {
