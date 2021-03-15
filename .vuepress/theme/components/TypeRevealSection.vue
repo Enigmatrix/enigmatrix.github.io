@@ -51,8 +51,15 @@ export default {
 };
 </script>
 
+<style lang="stylus" scoped>
+@require "../styles/tailwind.styl"
+</style>
+
 <style>
-.vue-typer-box {
+section {
+  @apply p-6;
+}
+.vue-typer-box{
   display: inline;
   font-family: monospace;
   font-size: 24px;

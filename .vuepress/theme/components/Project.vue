@@ -34,6 +34,10 @@ export default {
 };
 </script>
 
+<style lang="stylus" scoped>
+@require "../styles/tailwind.styl"
+</style>
+
 <style>
 .name-link {
   color: unset;

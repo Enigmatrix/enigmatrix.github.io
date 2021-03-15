@@ -1,5 +1,5 @@
 <template>
-  <main class="home">
+  <main class="home-main">
     <TypeRevealSection class="whoami" cmd="whoami">
       <div class="flex flex-col md:flex-row items-center justify-center">
         <div class>
@@ -99,10 +99,8 @@ export default {
 }
 </script>
 
-<style lang="stylus">
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+<style lang="stylus" scoped>
+@require "../styles/tailwind.styl"
 
 @css{
 	section {
@@ -122,7 +120,7 @@ export default {
 	background: linear-gradient(to bottom right, #ee0979, #ff6a00)
 	color: white
 
-.home
+.home-main
 	font-family: 'PT Sans'
 
 //html
