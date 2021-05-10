@@ -827,7 +827,9 @@ I also saved it to a file so that it can be read later.
 
 ## Writing the exploit
 Now that we know what input to provide to get our buffer overflow, we need to know what to do once we get control. Specifically, there is a function (`0x8048656`)
-that will print out the flag.
+that will print out the flag. I iterated over the 2-dimensional array to get the `FizzBuzz` and its list of conditions, then wrote functions that provide the appropriate input.
+
+These functions are called using `eval` (for simplicity). The functions are: `FizzBuzz`, `Equals`, `NotEquals`.
 
 ```python
 from pwn import *
